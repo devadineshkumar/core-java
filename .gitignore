@@ -1,0 +1,45 @@
+# IntelliJ IDEA project files
+.idea/
+*.iml
+*.iws
+
+# OS-specific temp files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Build output
+/out/
+target/
+build/
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+*.old
+
+# Compiled class files
+*.class
+
+# IDE-specific caches
+*.sublime-workspace
+*.vscode/
+*.classpath
+*.project
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Maven/Gradle wrappers
+.mvn/
+.gradle/
+
