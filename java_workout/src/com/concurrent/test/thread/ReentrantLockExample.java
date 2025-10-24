@@ -50,10 +50,14 @@ public class ReentrantLockExample {
             resource.printNumbers(threadName);
         };
 
-        Thread t1 = new Thread(task, "Thread-A");
-        Thread t2 = new Thread(task, "Thread-B");
-        t2.start();
+        Runnable task1 = () -> {
+            String threadName = Thread.currentThread().getName();
+            resource.printNumbers(threadName);
+        };
 
+        Thread t1 = new Thread(task, "Thread-A");
+        Thread t2 = new Thread(task1, "Thread-B");
+        t2.start();
         t1.start();
 
     }

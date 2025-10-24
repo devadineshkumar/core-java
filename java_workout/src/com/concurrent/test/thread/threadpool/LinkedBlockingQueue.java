@@ -16,6 +16,21 @@ public class LinkedBlockingQueue {
         consumerThread.start();
         consumerThread1.start();
         consumerThread2.start();
+
+        Runnable consumer3 = () -> {
+            while (true) {
+                try {
+                    int value = queue.take();
+                    System.out.println("Consumed by consumer3: " + value);
+                    Thread.sleep(1500); // simulate time to consume
+                } catch (Exception e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        };
+
+        Thread consumerThread3 = new Thread(consumer3);
+        consumerThread3.start();
     }
 }
 
@@ -32,9 +47,9 @@ class Producer implements Runnable {
         int value = 0;
         try {
             while (true) {
-                System.out.println("Produced: " + value);
+                //System.out.println("Produced: " + value);
                 queue.put(value++); // blocks if queue is full
-                Thread.sleep(500);  // simulate time to produce
+                Thread.sleep(100);  // simulate time to produce
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
