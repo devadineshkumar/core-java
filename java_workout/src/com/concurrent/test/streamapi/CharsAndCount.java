@@ -24,7 +24,12 @@ public class CharsAndCount {
                         LinkedHashMap::new,
                         Collectors.counting()));
 
-        System.out.println(counts);
+        List<Character> sortedByCountDesc = counts.entrySet().stream()
+                .sorted(Map.Entry.<Character, Long>comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .toList();
+
+        System.out.println(counts.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).findFirst().orElseGet(null));
 //
 //        // Corrected version (counting() returns Long, not Integer)
 //        Map<Character, Long> counts1 = s.chars()
